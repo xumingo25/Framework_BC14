@@ -25,10 +25,10 @@ public class OpenAllWebBrowser {
     }
 
     @Test
-    void TestFirefox(){
-        Properties firefoxProperties = new Properties();
-        firefoxProperties.put("browser","firefox");
-        String browserName = firefoxProperties.getProperty("browser");
+    void TestChrome(){
+        Properties chromeProperties = new Properties();
+        chromeProperties.put("browser","chrome");
+        String browserName = chromeProperties.getProperty("browser");
         driverFactory = new DriverFactory();
         driver = driverFactory.inicializarDriver(browserName);
         Assertions.assertTrue(driver.getWindowHandle() != null);
