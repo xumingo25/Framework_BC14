@@ -1,4 +1,4 @@
-package aut.testcreation.testcases;
+/*package aut.testcreation.testcases;
 
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
@@ -29,4 +29,4 @@ public class TestDemo extends SeleniumTestBase {
         Thread.sleep(5000);
         Assertions.assertTrue(true);
     }
-}
+}*/
