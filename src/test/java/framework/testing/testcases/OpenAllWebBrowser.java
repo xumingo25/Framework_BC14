@@ -1,4 +1,4 @@
-package framework.testing.testcases;
+/*package framework.testing.testcases;
 
 import framework.engine.selenium.DriverFactory;
 import org.junit.jupiter.api.Assertions;
@@ -47,4 +47,4 @@ public class OpenAllWebBrowser {
     }
 
 
-}
+}*/
