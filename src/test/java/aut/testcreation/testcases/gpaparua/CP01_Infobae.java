@@ -1,18 +1,17 @@
-package aut.testcreation.testcases;
+package aut.testcreation.testcases.gpaparua;
 
-
-import aut.testcreation.pages.Facebook_Infobae;
-import aut.testcreation.pages.Main;
+import aut.testcreation.pages.gpaparua.Main;
+import aut.testcreation.pages.gpaparua.Register;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
-public class CP03_Infobae {
+public class CP01_Infobae {
     WebDriver driver;
+    Register register;
     Main main;
-    Facebook_Infobae facebook_infobae;
     String rutaDriver = "C:\\Users\\guido.paparua\\Desktop\\BootCamp\\GIT\\Repo de todos - practica\\app\\src\\test\\resources\\drivers\\chromedriver.exe";
     String browser = "Chrome";
     String property = "webdriver.chrome.driver";
@@ -20,16 +19,17 @@ public class CP03_Infobae {
     public void preTests(){
         main = new Main(driver);
         main.conexionDriver(browser,rutaDriver,property);
-        facebook_infobae = new Facebook_Infobae(main.getDriver());
+        register = new Register(main.getDriver());
         main.cargarPagina("https://www.infobae.com/");
         main.maximizar();
     }
     @Test
-    public void CP03_FacebookInfobae(){
-        main.facebookInfobae();
-        facebook_infobae.olvideMiPasswordFacebook();
+    public void CP01_RegisterOK(){
+        main.register();
+        register.completarFormularioRegistro("aaaaapruebitaTSOFT456123@gmail.com", "Pepito", "Prueba", "Argentina", "Juancarlos1234.", "Juancarlos1234.");
         Assertions.assertTrue(true);
     }
     @AfterEach
     public void afterTests (){ main.cerrarBrowser(); }
+
 }

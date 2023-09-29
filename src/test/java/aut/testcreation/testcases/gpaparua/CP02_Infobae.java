@@ -1,7 +1,7 @@
-package aut.testcreation.testcases;
+package aut.testcreation.testcases.gpaparua;
 
-import aut.testcreation.pages.Login;
-import aut.testcreation.pages.Main;
+import aut.testcreation.pages.gpaparua.Login;
+import aut.testcreation.pages.gpaparua.Main;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

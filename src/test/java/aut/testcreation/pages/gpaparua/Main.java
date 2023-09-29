@@ -1,6 +1,6 @@
-package aut.testcreation.pages;
+package aut.testcreation.pages.gpaparua;
 
-import framework.engine.utils.Infobae_Base;
+import framework.engine.utils.gpaparua.Infobae_Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
