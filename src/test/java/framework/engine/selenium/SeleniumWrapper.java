@@ -1,15 +1,22 @@
 package framework.engine.selenium;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
+@Getter
 public class SeleniumWrapper {
 
-    private final WebDriver driver;
+    private WebDriver driver;
+    private WebDriverWait espera;
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
@@ -36,9 +43,6 @@ public class SeleniumWrapper {
         driver.findElement(locator).sendKeys(key);
     }
 
-    public void click(By locator){
-        driver.findElement(locator).click();
-    }
 
     public Boolean isDisplayed(By locator) {
         try {
@@ -69,6 +73,114 @@ public class SeleniumWrapper {
 
     public String getUrlTitle(){
         return driver.getTitle();
+    }
+
+
+
+
+
+    // METODOS----------------------------------------------------------------------------
+
+    // --------Getters and Setters---------------------------------
+
+
+// WRAPPER DE LAS ACCIONES DE SELENIUM------------------------------------------------
+
+    public void click(By localizador){
+        driver.findElement(localizador).click();
+    }
+
+
+    public void click(WebElement element){
+        element.click();
+    }
+
+
+
+    public void escribirTexto(By localizador, String texto){
+        driver.findElement(localizador).sendKeys(texto);
+    }
+
+    public void escribirTexto(WebElement element, String texto){
+        element.sendKeys(texto);
+    }
+
+    public WebElement buscarElementoWeb(By localizador){
+        return  driver.findElement(localizador);
+    }
+
+
+
+    public List<WebElement> buscarElementosWeb(By localizador){
+        return driver.findElements(localizador);
+    }
+
+
+    public void esperarXSegundos (int milisegundos)  {
+        try {
+            Thread.sleep(milisegundos);
+        } catch (InterruptedException e) {
+            //   throw new RuntimeException(e);
+            System.out.println("ups");
+        }
+    }
+
+    public void cargarPagina(String url){
+        driver.get(url);
+    }
+
+    //Driver que espera 20 milisegundos hasta que aparece un elemento, consulta cada 0.5 seg la condicion esperada --(ExpectedCondicions)--
+    public WebElement esperarXElementoLocalizado(By localizador){
+        espera = new WebDriverWait(this.getDriver(),20);
+        return espera.until(ExpectedConditions.presenceOfElementLocated(localizador));
+
+    }
+
+    public String obtenerTexto(By localizador){
+        return driver.findElement(localizador).getText();
+    }
+
+
+    public String obtenerTexto(WebElement element){
+        return element.getText();
+    }
+
+
+    public void maximizarBrowser(){
+        driver.manage().window().maximize();
+    }
+
+    public void cerrarBrowser(){
+        driver.quit();
+    }
+
+
+    public WebDriver conexionDriver(String browser, String ruta, String property){
+        if (browser.equalsIgnoreCase("Chrome")){
+            System.setProperty(property,ruta);
+            this.driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("Firefox")){
+            System.setProperty(property,ruta);
+            this.driver = new FirefoxDriver();
+        }
+        return this.driver;
+    }
+
+
+
+
+    public void  seleccionarComboBoxPorValor(By localizador, String value){
+
+        Select selectDia = new Select(esperarXElementoLocalizado(localizador));
+        selectDia.selectByValue(value);
+
+    }
+
+    public void  seleccionarComboBoxPorTextoVisible(By localizador, String texto){
+
+        Select selectDia = new Select(esperarXElementoLocalizado(localizador));
+        selectDia.selectByVisibleText(texto);
+
     }
 
 }
