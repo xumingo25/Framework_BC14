@@ -1,30 +1,33 @@
-package aut.testcreation.pages.BernardoPages;
+package aut.testcreation.pages.Bootcamp14pages;
 
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends SeleniumWrapper {
+public class HomePageRumbo extends SeleniumWrapper {
 
 
-    public HomePage(WebDriver driver) {
+    public HomePageRumbo(WebDriver driver) {
         super(driver);
     }
 
 
     // DEFINIR LOCALIZADORES-----------------------------------------------------------------------
-    By localizadorBotonRegistrar = By.xpath("//a[contains(text(),'Registrarte')]");
+    By localizadorBotonCookies = By.xpath("//button[contains(text(), 'Aceptar todo')]");
 
 
 
 
     // CENTRALIZAR ACCIONES------------------------------------------------------------------------
 
-    public void irARegistrarse(){
-       // click(localizadorBotonRegistrar);
-     click(esperarXElementoLocalizado(localizadorBotonRegistrar));
+    public void aceptarCookies(){
+
+     click(esperarXElementoLocalizado(localizadorBotonCookies));
     }
 
-    
+
+
+
+
 }
